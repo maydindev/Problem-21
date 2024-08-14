@@ -1,3 +1,4 @@
+import Document from "next/document";
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
@@ -30,18 +31,16 @@ export default function App() {
 function MousePosition() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
-  function handleMove(e) {
-    setPosition({ x: e.clientX, y: e.clientY });
-    console.log("Updating state");
-  }
-
   useEffect(() => {
+    function handleMove(e) {
+      setPosition({ x: e.clientX, y: e.clientY });
+      document.console.log("Updating state");
+    }
     window.addEventListener("pointermove", handleMove);
-    
 
     return () => {
       window.removeEventListener("pointermove", handleMove);
-      console.log("Unmounted");
+      document.console.log("Unmounted");
     };
   }, []);
 
