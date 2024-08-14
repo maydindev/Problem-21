@@ -33,6 +33,7 @@ function MousePosition() {
   const [position, setPosition] = useState({ x: 0, y: 0 })
 
   useEffect(() => {
+    
     function handleMove(e) {
       setPosition({ x: e.clientX, y: e.clientY })
       console.log('Updating state')
@@ -43,7 +44,8 @@ function MousePosition() {
       window.removeEventListener("pointermove",handleMove)
       console.log('Unmounted')
     }
-  }, [])
+  }
+, [])
 
   return (
     <div className='space-y-5'>
